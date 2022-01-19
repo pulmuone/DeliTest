@@ -43,7 +43,7 @@ namespace DeliTest
                 SendRequestModel request = new SendRequestModel()
                 {
                     API_KEY = this.API_KEY,
-                    BR_END_NM = "경주외동석계1317",
+                    BR_END_NM = "",
                     COM_NM = "",
                     RECV_NM = "보내는분 테스트",
                     RECV_TEL1 = "010-0000-0000",
@@ -379,15 +379,15 @@ namespace DeliTest
                 RECV_NM = "받는분 테스트",
                 RECV_TEL1 = "010-0000-0000",
                 RECV_TEL2 = "",
-                RECV_ZIPCODE = "08594",
-                RECV_ADDR1 = "서울특별시 금천구 가산디지털로 19",
-                RECV_ADDR2 = "18층 1801",
+                RECV_ZIPCODE = "11921",
+                RECV_ADDR1 = "경기도 구리시 건원대로 34번길 25 (안창동, 인아월드코아)",
+                RECV_ADDR2 = "405호",
                 SEND_NM = "보내는분 이름",
                 SEND_TEL1 = "010-0000-0000",
                 SEND_TEL2 = "010-0000-0000",
-                SEND_ZIPCODE = "08101",
-                SEND_ADDR1 = "서울시 양천구 목동남로 68",
-                SEND_ADDR2 = "101호",
+                SEND_ZIPCODE = "18583",
+                SEND_ADDR1 = "경기 화성시 장안면 독정리 474-3",
+                SEND_ADDR2 = "문의 031-8608-8707",
                 PD_CNT = 2,
                 PD_DELI_GUBUN = "현택",
                 PD_DELI_PAY = 2000,
@@ -411,14 +411,16 @@ namespace DeliTest
             for (int i = 1; i <= sendRequestModel.PD_CNT; i++)
             {
                 report.CreateDocument(true); //파라민터를 재 할당 해서 사용 가능, true로 해야 한다.
-                report.ParametersRequestValueChanged += Report_ParametersRequestValueChanged;
+                //report.ParametersRequestValueChanged += Report_ParametersRequestValueChanged;
 
                 //화면에 진행하는 창 안보이게
                 report.PrintingSystem.ShowMarginsWarning = false;
                 report.PrintingSystem.ShowPrintStatusDialog = false;
                 report.ShowPrintStatusDialog = false;
-                report.ShowPrintMarginsWarning = false;
-                report.PrintOnEmptyDataSource = false;
+
+                //report.ShowPrintMarginsWarning = false;
+                //report.PrintOnEmptyDataSource = false;
+                
                 //report.ShowPreviewMarginLines = true;
                 //report.PrintingSystem.SetCommandVisibility(PrintingSystemCommand.PrintDirect, CommandVisibility.None);
 
@@ -475,8 +477,8 @@ namespace DeliTest
                 report.Parameters["PD_DOCK2"].Value = sendResponseModel.PD_DOCK2; //Response.PD_DOCK2 두번째 터미널 도크
                 report.Parameters["CUSTOMER_CENTER"].Value = "고객센터 : 1899-5368"; //고객센터
 
-                //report.Parameters["PD_TERMINAL1"].Value = sendResponseModel.PD_TERMINAL1;
-                report.Parameters["PD_TERMINAL1"].Value = "칠곡";
+                report.Parameters["PD_TERMINAL1"].Value = sendResponseModel.PD_TERMINAL1;
+                //report.Parameters["PD_TERMINAL1"].Value = "칠곡";
 
 
                 using (ReportPrintTool printTool = new ReportPrintTool(report))
@@ -486,8 +488,9 @@ namespace DeliTest
                     //printTool.Print("Microsoft Print to PDF"); //프린터 지정해서 바로 인쇄, OneNote 16으로 보내기
 
                     //printControl.ExecCommand(PrintingSystemCommand.PrintDirect);
-                    printTool.PrintingSystem.PrintProgress += PrintingSystem_PrintProgress;
+                    //printTool.PrintingSystem.PrintProgress += PrintingSystem_PrintProgress;
                     printTool.Print("Adobe PDF");
+                    //printTool.Print("OneNote 16으로 보내기");                    
                     //printTool.Print();
                 }
             }
@@ -524,5 +527,7 @@ namespace DeliTest
             string DELE_DATE = string.Format(@"{0:yyyy.MM.dd} ({1:HH.mm}.{2:F2})", DateTime.Now, DateTime.Now, 2500 / 1000.0);
             Console.WriteLine(DELE_DATE); // 2021.12.29 (15.06.2.50)
         }
+       
+
     }
 }

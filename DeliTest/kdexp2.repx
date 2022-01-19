@@ -414,10 +414,10 @@ namespace XtraReportSerialization {
             this.Label_RECV_ZIPCODE.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
                         new DevExpress.XtraReports.UI.XRBinding(this.RECV_ZIPCODE, "Text", "")});
             this.Label_RECV_ZIPCODE.Font = new System.Drawing.Font("HY견고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label_RECV_ZIPCODE.LocationFloat = new DevExpress.Utils.PointFloat(353.1905F, 164F);
+            this.Label_RECV_ZIPCODE.LocationFloat = new DevExpress.Utils.PointFloat(353.1905F, 155F);
             this.Label_RECV_ZIPCODE.Name = "Label_RECV_ZIPCODE";
             this.Label_RECV_ZIPCODE.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.Label_RECV_ZIPCODE.SizeF = new System.Drawing.SizeF(66.31F, 20F);
+            this.Label_RECV_ZIPCODE.SizeF = new System.Drawing.SizeF(66.31F, 28.99998F);
             this.Label_RECV_ZIPCODE.StylePriority.UseFont = false;
             // 
             // Label_RECV_ADDR2
@@ -435,17 +435,18 @@ namespace XtraReportSerialization {
             // 
             this.Label_RECV_ADDR1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
                         new DevExpress.XtraReports.UI.XRBinding(this.RECV_ADDR1, "Text", "")});
-            this.Label_RECV_ADDR1.Font = new System.Drawing.Font("HY견고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label_RECV_ADDR1.LocationFloat = new DevExpress.Utils.PointFloat(419.5005F, 164F);
+            this.Label_RECV_ADDR1.Font = new System.Drawing.Font("HY견고딕", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)), true);
+            this.Label_RECV_ADDR1.LocationFloat = new DevExpress.Utils.PointFloat(419.5005F, 155F);
             this.Label_RECV_ADDR1.Name = "Label_RECV_ADDR1";
             this.Label_RECV_ADDR1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.Label_RECV_ADDR1.SizeF = new System.Drawing.SizeF(273.499F, 20.00003F);
+            this.Label_RECV_ADDR1.SizeF = new System.Drawing.SizeF(273.499F, 29.00003F);
             this.Label_RECV_ADDR1.StylePriority.UseFont = false;
+            this.Label_RECV_ADDR1.Text = "Label_RECV_ADDR1";
             // 
             // label21
             // 
             this.label21.Font = new System.Drawing.Font("HY견고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.LocationFloat = new DevExpress.Utils.PointFloat(353.1905F, 145F);
+            this.label21.LocationFloat = new DevExpress.Utils.PointFloat(353.1905F, 140F);
             this.label21.Name = "label21";
             this.label21.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.label21.SizeF = new System.Drawing.SizeF(94.27084F, 15F);
@@ -914,7 +915,7 @@ namespace XtraReportSerialization {
             // 
             this.RECV_ADDR1.Description = "받는분 주소";
             this.RECV_ADDR1.Name = "RECV_ADDR1";
-            this.RECV_ADDR1.Value = "서울특별시 금천구 가산디지털로 19";
+            this.RECV_ADDR1.Value = "경기도 구리시 건원대로 34번길 25 (안창동, 인아월드코아)";
             this.RECV_ADDR1.Visible = false;
             // 
             // RECV_ADDR2
