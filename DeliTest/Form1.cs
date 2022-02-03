@@ -1,4 +1,5 @@
 ﻿using DeliTest.Models.BranchInfo;
+using DeliTest.Models.Chunil;
 using DeliTest.Models.Delete;
 using DeliTest.Models.DeliveryArea;
 using DeliTest.Models.DockInfo;
@@ -9,22 +10,16 @@ using DeliTest.Models.SendBranch;
 using DeliTest.Models.SendResult;
 using DeliTest.Services;
 using DevExpress.XtraPrinting;
-using DevExpress.XtraPrinting.Control;
 using DevExpress.XtraReports.UI;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraReports.UserDesigner;
 
 namespace DeliTest
 {
@@ -57,15 +52,15 @@ namespace DeliTest
                     SEND_ZIPCODE = "08101",
                     SEND_ADDR1 = "서울시 양천구 목동남로 68",
                     SEND_ADDR2 = "101호",
-                    PD_CNT = 2,
+                    PD_CNT = 1,
                     PD_DELI_GUBUN = "현택",
                     PD_DELI_PAY = 2000,
                     PD_MEMO = "메모 테스트",
                     PD_NM = "컴퓨터 부품",
                     PD_PACK = "박스",
-                    PD_PRICE = "30|30",
-                    PD_VOLUME = "30|30",
-                    PD_WEIGHT = "5.5|5.5"
+                    PD_PRICE = "30",
+                    PD_VOLUME = "30",
+                    PD_WEIGHT = "5.5"
                 };
 
                 var result = await HttpService.Instance.SendRequestAsync(HttpMethod.Post, "/v1/Send", request);
@@ -94,7 +89,7 @@ namespace DeliTest
                 DeleteRequestModel request = new DeleteRequestModel()
                 {
                     API_KEY = this.API_KEY,
-                    PD_BARCODE = "9999915210004"
+                    PD_BARCODE = "9999910520002"
                 };
 
                 var result = await HttpService.Instance.SendRequestAsync(HttpMethod.Delete, "/v1/Delete", request);
@@ -164,7 +159,7 @@ namespace DeliTest
                 FindBarcodeRequestModel request = new FindBarcodeRequestModel()
                 {
                     API_KEY = this.API_KEY,
-                    PD_BARCODE = "9999915210004"
+                    PD_BARCODE = "9999910520002"
                 };
 
                 var result = await HttpService.Instance.SendRequestAsync(HttpMethod.Post, "/v1/FindBarcode", request);
@@ -248,7 +243,7 @@ namespace DeliTest
                 SendResultRequestModel request = new SendResultRequestModel()
                 {
                     API_KEY = this.API_KEY,
-                    Items = new List<string> { "9999915210029", "9999915210030" }
+                    Items = new List<string> { "9999910520002" }
                 };
 
                 var result = await HttpService.Instance.SendRequestAsync(HttpMethod.Post, "/v1/SendResult", request);
@@ -405,8 +400,9 @@ namespace DeliTest
             //대량으로 출력시 싱글톤으로 처리
             //XtraReport report = new XtraReport();
             //report.LoadLayout(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "kdexp2.repx"));
-
-            XtraReport report = XtraReport.FromFile(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "kdexp2.repx"), true);
+            string path = Directory.GetCurrentDirectory();
+            //XtraReport report = XtraReport.FromFile(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "Repx/kdexp2.repx"), true);
+            XtraReport report = XtraReport.FromFile(Path.Combine(path, "Repx/kdexp2.repx"), true);
 
             for (int i = 1; i <= sendRequestModel.PD_CNT; i++)
             {
@@ -420,7 +416,7 @@ namespace DeliTest
 
                 //report.ShowPrintMarginsWarning = false;
                 //report.PrintOnEmptyDataSource = false;
-                
+
                 //report.ShowPreviewMarginLines = true;
                 //report.PrintingSystem.SetCommandVisibility(PrintingSystemCommand.PrintDirect, CommandVisibility.None);
 
@@ -527,7 +523,165 @@ namespace DeliTest
             string DELE_DATE = string.Format(@"{0:yyyy.MM.dd} ({1:HH.mm}.{2:F2})", DateTime.Now, DateTime.Now, 2500 / 1000.0);
             Console.WriteLine(DELE_DATE); // 2021.12.29 (15.06.2.50)
         }
-       
 
+        private async void btnChunilSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RequestSendChunilModel request = new RequestSendChunilModel()
+                {
+                    MAINNB = "92190000014",
+                    BWCODE = "2000010",
+                    JBDATE = "2022-02-03",
+                    CHASEQ = 6,
+                    GDSORD = "[택배봉투-도매][C1-21-02] [410] ( 100 * 20ea )",
+                    GDSQNT = 1,
+                    SWNAME = "로리스토어",
+                    SWTEL1 = "010-9343-3978",
+                    SWZPCD = "07531",
+                    SWADDR = "서울특별시 강서구 허준로 217 (가양동, 가양테크노타운) 804-1호",
+                    REMARK = "API 테스트",
+                    SELCST = string.Empty,
+                    JUMNAM = string.Empty,
+                    JUMDAT = string.Empty,
+                    JUMNUM = "C586497796039975",
+                    PAYGBN = "신용",
+                    CPGKEY = "A",
+                    CHARGE = 2500,
+                    MAINGB = "O", //(일반:O, 반품:R)
+                    PRTDAT = String.Empty,
+                    AREGBN = string.Empty,
+                    GUBGBN = string.Empty,
+                    SIDONG = string.Empty,
+                    CUSTNM = string.Empty,
+                    TELCST = string.Empty,
+                    ADDRE1 = string.Empty,
+                    MAINNM = string.Empty,
+                    PRDATE = string.Empty,
+                    CHASUM = 0,
+                    REGDAT = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    PROGBN = "RDY", //필수(RDY) 등록 : RDY / 정상처리 : OK / 오류 : ERR
+                    PRODAT = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ERRNAM = string.Empty
+                };
+
+
+                string result = string.Empty;
+
+                result = await HttpService.Instance.ChunilSendRequestAsync(HttpMethod.Post, "Send", request);
+
+                if(result.StartsWith("ERROR"))
+                {
+                    Console.WriteLine("서버에 도착전 에러 :" + result);
+                    //실패 로그 기록
+                }
+                else
+                {
+                    ResultModel response = JsonConvert.DeserializeObject<ResultModel>(result);
+                    Console.WriteLine(response);
+
+                    if(response.ResultCode == "00")
+                    {
+                        //정상처리
+                        Console.WriteLine("");
+                    }
+                    else
+                    {
+                        //실패 로그 기록
+                        Console.WriteLine("");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private async void btnChunilSendConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string result = string.Empty;
+
+                RequestConfirmChunilModel request = new RequestConfirmChunilModel()
+                {
+                    JBDATE = "2022-01-26",
+                    BWCODE = "2000010"
+                };
+
+                result = await HttpService.Instance.ChunilSendRequestAsync(HttpMethod.Post, "SendConfirm", request);
+
+                if (result.StartsWith("ERROR"))
+                {
+                    Console.WriteLine("서버에 도착전 에러 :" + result);
+                    //실패 로그 기록
+                }
+                else
+                {
+                    ResultModel response = JsonConvert.DeserializeObject<ResultModel>(result);
+                    Console.WriteLine(response);
+
+                    if (response.ResultCode == "00")
+                    {
+                        //정상처리
+                        Console.WriteLine("");
+                    }
+                    else
+                    {
+                        //실패 로그 기록
+                        Console.WriteLine("");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private async void btnChunilSendResult_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string result = string.Empty;
+
+                RequestSendResultChunilModel request = new RequestSendResultChunilModel()
+                {
+                    MAINNB = "92190000001"
+                };
+                
+
+                result = await HttpService.Instance.ChunilSendRequestAsync(HttpMethod.Post, "SendResult", request);
+
+                if (result.StartsWith("ERROR"))
+                {
+                    Console.WriteLine("서버에 도착전 에러 :" + result);
+                    //실패 로그 기록
+                }
+                else
+                {
+                    ResponseChunilResult response = JsonConvert.DeserializeObject<ResponseChunilResult>(result);
+                    Console.WriteLine(response);
+
+                    if (response.ResultCode == "00")
+                    {
+                        //정상처리
+                        Console.WriteLine(response.Result);
+                        
+                    }
+                    else
+                    {
+                        //실패 로그 기록
+                        Console.WriteLine("");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
     }
 }

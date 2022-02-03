@@ -40,6 +40,9 @@
             this.btnLabelPrint = new System.Windows.Forms.Button();
             this.btnLabelPrint2 = new System.Windows.Forms.Button();
             this.btnString = new System.Windows.Forms.Button();
+            this.btnChunilSend = new System.Windows.Forms.Button();
+            this.btnChunilSendConfirm = new System.Windows.Forms.Button();
+            this.btnChunilSendResult = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSend
@@ -162,11 +165,44 @@
             this.btnString.UseVisualStyleBackColor = true;
             this.btnString.Click += new System.EventHandler(this.btnString_Click);
             // 
+            // btnChunilSend
+            // 
+            this.btnChunilSend.Location = new System.Drawing.Point(35, 488);
+            this.btnChunilSend.Name = "btnChunilSend";
+            this.btnChunilSend.Size = new System.Drawing.Size(116, 76);
+            this.btnChunilSend.TabIndex = 12;
+            this.btnChunilSend.Text = "천일택배 전송";
+            this.btnChunilSend.UseVisualStyleBackColor = true;
+            this.btnChunilSend.Click += new System.EventHandler(this.btnChunilSend_Click);
+            // 
+            // btnChunilSendConfirm
+            // 
+            this.btnChunilSendConfirm.Location = new System.Drawing.Point(186, 488);
+            this.btnChunilSendConfirm.Name = "btnChunilSendConfirm";
+            this.btnChunilSendConfirm.Size = new System.Drawing.Size(128, 76);
+            this.btnChunilSendConfirm.TabIndex = 13;
+            this.btnChunilSendConfirm.Text = "천일택배 확정";
+            this.btnChunilSendConfirm.UseVisualStyleBackColor = true;
+            this.btnChunilSendConfirm.Click += new System.EventHandler(this.btnChunilSendConfirm_Click);
+            // 
+            // btnChunilSendResult
+            // 
+            this.btnChunilSendResult.Location = new System.Drawing.Point(351, 488);
+            this.btnChunilSendResult.Name = "btnChunilSendResult";
+            this.btnChunilSendResult.Size = new System.Drawing.Size(143, 76);
+            this.btnChunilSendResult.TabIndex = 14;
+            this.btnChunilSendResult.Text = "천일택배 확정 조회";
+            this.btnChunilSendResult.UseVisualStyleBackColor = true;
+            this.btnChunilSendResult.Click += new System.EventHandler(this.btnChunilSendResult_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 710);
+            this.Controls.Add(this.btnChunilSendResult);
+            this.Controls.Add(this.btnChunilSendConfirm);
+            this.Controls.Add(this.btnChunilSend);
             this.Controls.Add(this.btnString);
             this.Controls.Add(this.btnLabelPrint2);
             this.Controls.Add(this.btnLabelPrint);
@@ -199,6 +235,9 @@
         private System.Windows.Forms.Button btnLabelPrint;
         private System.Windows.Forms.Button btnLabelPrint2;
         private System.Windows.Forms.Button btnString;
+        private System.Windows.Forms.Button btnChunilSend;
+        private System.Windows.Forms.Button btnChunilSendConfirm;
+        private System.Windows.Forms.Button btnChunilSendResult;
     }
 }
 
