@@ -98,12 +98,6 @@
     <Compile Include="CustomPreviewControlTemplate.Designer.cs">
       <DependentUpon>CustomPreviewControlTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomPreviewControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomPreviewControl.Designer.cs">
-      <DependentUpon>CustomPreviewControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,9 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomPreviewControlTemplate.resx">
       <DependentUpon>CustomPreviewControlTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomPreviewControl.resx">
-      <DependentUpon>CustomPreviewControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
