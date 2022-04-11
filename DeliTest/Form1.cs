@@ -20,6 +20,11 @@ using System.Net.Http;
 using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.UserDesigner;
+using DevExpress.XtraPrinting.Preview;
+using DevExpress.XtraPrinting.Control;
+using DevExpress.Tutorials;
+using DevExpress.LookAndFeel;
+using XtraPrintingDemos;
 
 namespace DeliTest
 {
@@ -476,18 +481,21 @@ namespace DeliTest
                 report.Parameters["PD_TERMINAL1"].Value = sendResponseModel.PD_TERMINAL1;
                 //report.Parameters["PD_TERMINAL1"].Value = "칠곡";
 
-
                 using (ReportPrintTool printTool = new ReportPrintTool(report))
                 {
+                    printControl1.PrintingSystem = printTool.PrintingSystem;
+                    //printControl1.PrintingSystem = printTool.PrintingSystem;
                     //인쇄방향, 용지 설정
                     //PrintControl printControl = printTool.PreviewForm.PrintControl;
                     //printTool.Print("Microsoft Print to PDF"); //프린터 지정해서 바로 인쇄, OneNote 16으로 보내기
 
+                    //printControl.ExecCommand(PrintingSystemCommand.ViewWholePage);
                     //printControl.ExecCommand(PrintingSystemCommand.PrintDirect);
                     //printTool.PrintingSystem.PrintProgress += PrintingSystem_PrintProgress;
-                    printTool.Print("Adobe PDF");
+                    //printTool.Print("Adobe PDF");
                     //printTool.Print("OneNote 16으로 보내기");                    
-                    //printTool.Print();
+
+                    printTool.Print();
                 }
             }
         }
@@ -570,7 +578,7 @@ namespace DeliTest
 
                 result = await HttpService.Instance.ChunilSendRequestAsync(HttpMethod.Post, "Send", request);
 
-                if(result.StartsWith("ERROR"))
+                if (result.StartsWith("ERROR"))
                 {
                     Console.WriteLine("서버에 도착전 에러 :" + result);
                     //실패 로그 기록
@@ -580,7 +588,7 @@ namespace DeliTest
                     ResultModel response = JsonConvert.DeserializeObject<ResultModel>(result);
                     Console.WriteLine(response);
 
-                    if(response.ResultCode == "00")
+                    if (response.ResultCode == "00")
                     {
                         //정상처리
                         Console.WriteLine("");
@@ -650,7 +658,7 @@ namespace DeliTest
                 {
                     MAINNB = "92190000001"
                 };
-                
+
 
                 result = await HttpService.Instance.ChunilSendRequestAsync(HttpMethod.Post, "SendResult", request);
 
@@ -668,7 +676,7 @@ namespace DeliTest
                     {
                         //정상처리
                         Console.WriteLine(response.Result);
-                        
+
                     }
                     else
                     {
@@ -682,6 +690,42 @@ namespace DeliTest
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        //CustomPreviewControl preview = new CustomPreviewControl();
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string path = Directory.GetCurrentDirectory();
+            XtraReport report = XtraReport.FromFile(Path.Combine(path, "Repx/kdexp2.repx"), true);
+            report.CreateDocument(true); //파라민터를 재 할당 해서 사용 가능, true로 해야 한다.
+
+            //PrintControl printControl1 = new PrintControl();
+            //panel1.Container.Add(printControl1);
+
+            printControl1.PrintingSystem = report.PrintingSystem;
+
+            printBarManager1.Form = printControl1;
+            printBarManager1.Initialize(printControl1);
+            printBarManager1.MainMenu.Visible = false;
+            printBarManager1.AllowCustomization = false;
+
+            printControl1.PrintingSystem.SetCommandVisibility(new PrintingSystemCommand[]{
+                PrintingSystemCommand.Open,
+                PrintingSystemCommand.Save,
+                PrintingSystemCommand.ClosePreview,
+                PrintingSystemCommand.Customize,
+                PrintingSystemCommand.SendCsv,
+                PrintingSystemCommand.SendFile,
+                PrintingSystemCommand.SendGraphic,
+                PrintingSystemCommand.SendMht,
+                PrintingSystemCommand.SendPdf,
+                PrintingSystemCommand.SendRtf,
+                PrintingSystemCommand.SendTxt,
+                PrintingSystemCommand.SendXls
+            }, CommandVisibility.None);
+
+            printControl1.Dock = DockStyle.Fill;
         }
     }
 }
