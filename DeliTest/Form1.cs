@@ -685,16 +685,12 @@ namespace DeliTest
 
         }
 
-        //CustomPreviewControl preview = new CustomPreviewControl();
-
         private void Form1_Load(object sender, EventArgs e)
         {
             string path = Directory.GetCurrentDirectory();
             XtraReport report = XtraReport.FromFile(Path.Combine(path, "Repx/kdexp2.repx"), true);
             report.CreateDocument(true); //파라민터를 재 할당 해서 사용 가능, true로 해야 한다.
 
-            //PrintControl printControl1 = new PrintControl();
-            //panel1.Container.Add(printControl1);
 
             printControl1.PrintingSystem = report.PrintingSystem;
 
