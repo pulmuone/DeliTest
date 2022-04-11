@@ -18,13 +18,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
-using DevExpress.XtraReports.UI;
-using DevExpress.XtraReports.UserDesigner;
-using DevExpress.XtraPrinting.Preview;
-using DevExpress.XtraPrinting.Control;
-using DevExpress.Tutorials;
-using DevExpress.LookAndFeel;
-using XtraPrintingDemos;
 
 namespace DeliTest
 {
