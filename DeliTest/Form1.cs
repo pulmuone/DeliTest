@@ -400,9 +400,11 @@ namespace DeliTest
             //대량으로 출력시 싱글톤으로 처리
             //XtraReport report = new XtraReport();
             //report.LoadLayout(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "kdexp2.repx"));
-            string path = Directory.GetCurrentDirectory();
             //XtraReport report = XtraReport.FromFile(Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "Repx/kdexp2.repx"), true);
+            string path = Directory.GetCurrentDirectory();
             XtraReport report = XtraReport.FromFile(Path.Combine(path, "Repx/kdexp2.repx"), true);
+
+            //XtraReport report = XtraReport.FromFile(Path.Combine(Directory.GetCurrentDirectory(), "Repx/kdexp.repx"), true);
 
             for (int i = 1; i <= sendRequestModel.PD_CNT; i++)
             {
