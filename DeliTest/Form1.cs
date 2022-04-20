@@ -720,9 +720,6 @@ namespace DeliTest
                 PrintingSystemCommand.SendXls
             }, CommandVisibility.None);
 
-
-            this.panel1.Controls.Add(printControl1);
-            printControl1.Dock = DockStyle.Fill;
         }
     }
 }

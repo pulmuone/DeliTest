@@ -47,9 +47,7 @@
             this.btnChunilSendConfirm = new System.Windows.Forms.Button();
             this.btnChunilSendResult = new System.Windows.Forms.Button();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox2)).BeginInit();
@@ -225,10 +223,6 @@
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Size = new System.Drawing.Size(676, 29);
             // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -236,19 +230,11 @@
             this.barDockControlTop.Location = new System.Drawing.Point(2, 2);
             this.barDockControlTop.Size = new System.Drawing.Size(684, 29);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(738, 143);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1046, 839);
-            this.panel1.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1998, 1064);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(877, 1064);
             this.Controls.Add(this.btnChunilSendResult);
             this.Controls.Add(this.btnChunilSendConfirm);
             this.Controls.Add(this.btnChunilSend);
@@ -292,10 +278,8 @@
         private System.Windows.Forms.Button btnChunilSend;
         private System.Windows.Forms.Button btnChunilSendConfirm;
         private System.Windows.Forms.Button btnChunilSendResult;
-        private System.Windows.Forms.PrintDialog printDialog1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControl1;
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar2;
         private DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar repositoryItemZoomTrackBar2;
         private DevExpress.XtraPrinting.Preview.PrintPreviewRepositoryItemComboBox printPreviewRepositoryItemComboBox2;
