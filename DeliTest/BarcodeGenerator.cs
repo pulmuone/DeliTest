@@ -12,10 +12,12 @@ namespace DeliTest
         static readonly BarcodeGenerator instance = new BarcodeGenerator();
 
         private ZXing.BarcodeWriter barcodeWriter;
+        private ZXing.QrCode.QrCodeEncodingOptions options;
 
         private BarcodeGenerator()
         {
             barcodeWriter = new BarcodeWriter();
+            options = new ZXing.QrCode.QrCodeEncodingOptions();
         }
 
         public static BarcodeGenerator Instance
@@ -31,6 +33,14 @@ namespace DeliTest
             get
             {
                 return barcodeWriter;
+            }
+        }
+
+        public ZXing.QrCode.QrCodeEncodingOptions Options
+        {
+            get
+            {
+                return options;
             }
         }
     }

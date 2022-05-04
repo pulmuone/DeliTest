@@ -492,9 +492,17 @@ namespace DeliTest
                 //writer.Options.Height = 100;
                 var writer = BarcodeGenerator.Instance.Writer;
                 writer.Format = BarcodeFormat.QR_CODE;
-                writer.Options.PureBarcode = true; //바코드만 나오게 할건지?
-                writer.Options.Width = 100;
-                writer.Options.Height = 80;
+                //writer.Options.PureBarcode = true; //바코드만 나오게 할건지?
+                //writer.Options.Width = 100;
+                //writer.Options.Height = 80;
+
+                var options = BarcodeGenerator.Instance.Options;
+                options.PureBarcode = true;
+                options.Width = 100;
+                options.Height = 100;
+                options.ErrorCorrection = ZXing.QrCode.Internal.ErrorCorrectionLevel.H;
+
+                writer.Options = options;
 
                 pictureBox.Image = writer.Write("AB213");
 
