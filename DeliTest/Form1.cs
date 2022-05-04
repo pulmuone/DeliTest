@@ -485,11 +485,16 @@ namespace DeliTest
 
                 XRPictureBox pictureBox = (XRPictureBox)report.FindControl("pictureBox1", true);
 
-                var writer = new BarcodeWriter();
-                writer.Format = BarcodeFormat.QR_CODE;
-                writer.Options.PureBarcode = true; //바코드만 나오게 할건지?
+                //var writer = new BarcodeWriter();
+                //writer.Format = BarcodeFormat.QR_CODE;
+                //writer.Options.PureBarcode = true; //바코드만 나오게 할건지?
                 //writer.Options.Width = 300;
                 //writer.Options.Height = 100;
+                var writer = BarcodeGenerator.Instance.Writer;
+                writer.Format = BarcodeFormat.QR_CODE;
+                writer.Options.PureBarcode = true; //바코드만 나오게 할건지?
+                writer.Options.Width = 100;
+                writer.Options.Height = 80;
 
                 pictureBox.Image = writer.Write("AB213");
 
