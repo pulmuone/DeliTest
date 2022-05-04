@@ -1,4 +1,5 @@
-﻿using DeliTest.Models.BranchInfo;
+﻿using BarcodeLib;
+using DeliTest.Models.BranchInfo;
 using DeliTest.Models.Chunil;
 using DeliTest.Models.Delete;
 using DeliTest.Models.DeliveryArea;
@@ -20,6 +21,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
+using ZXing;
 
 namespace DeliTest
 {
@@ -477,6 +479,19 @@ namespace DeliTest
 
                 report.Parameters["PD_TERMINAL1"].Value = sendResponseModel.PD_TERMINAL1;
                 //report.Parameters["PD_TERMINAL1"].Value = "칠곡";
+
+                //BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
+                //barcode.Encode(BarcodeLib.TYPE.CODE128, "12345");
+
+                XRPictureBox pictureBox = (XRPictureBox)report.FindControl("pictureBox1", true);
+
+                var writer = new BarcodeWriter();
+                writer.Format = BarcodeFormat.QR_CODE;
+                writer.Options.PureBarcode = true; //바코드만 나오게 할건지?
+                //writer.Options.Width = 300;
+                //writer.Options.Height = 100;
+
+                pictureBox.Image = writer.Write("AB213");
 
                 using (ReportPrintTool printTool = new ReportPrintTool(report))
                 {

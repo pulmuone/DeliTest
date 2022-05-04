@@ -9,6 +9,7 @@ namespace XtraReportSerialization {
     public class kdexp : DevExpress.XtraReports.UI.XtraReport {
         private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
         private DevExpress.XtraReports.UI.DetailBand Detail;
+        private DevExpress.XtraReports.UI.XRPictureBox pictureBox1;
         private DevExpress.XtraReports.UI.XRShape rect3;
         private DevExpress.XtraReports.UI.XRShape rect2;
         private DevExpress.XtraReports.UI.XRShape rect1;
@@ -147,10 +148,11 @@ namespace XtraReportSerialization {
             DevExpress.XtraPrinting.Shape.ShapeRectangle shapeRectangle5 = new DevExpress.XtraPrinting.Shape.ShapeRectangle();
             DevExpress.XtraPrinting.Shape.ShapeRectangle shapeRectangle6 = new DevExpress.XtraPrinting.Shape.ShapeRectangle();
             DevExpress.XtraPrinting.Shape.ShapeRectangle shapeRectangle7 = new DevExpress.XtraPrinting.Shape.ShapeRectangle();
-            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
+            DevExpress.XtraPrinting.BarCode.Matrix2of5Generator matrix2of5Generator1 = new DevExpress.XtraPrinting.BarCode.Matrix2of5Generator();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.pictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.rect3 = new DevExpress.XtraReports.UI.XRShape();
             this.rect2 = new DevExpress.XtraReports.UI.XRShape();
             this.rect1 = new DevExpress.XtraReports.UI.XRShape();
@@ -232,6 +234,7 @@ namespace XtraReportSerialization {
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+                        this.pictureBox1,
                         this.rect3,
                         this.rect2,
                         this.rect1,
@@ -282,6 +285,12 @@ namespace XtraReportSerialization {
             this.BottomMargin.HeightF = 5F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(368.75F, 308.2886F);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.SizeF = new System.Drawing.SizeF(113.4239F, 66.44757F);
             // 
             // rect3
             // 
@@ -358,7 +367,7 @@ namespace XtraReportSerialization {
             this.Label_PD_DOCK2.LocationFloat = new DevExpress.Utils.PointFloat(353.1905F, 254F);
             this.Label_PD_DOCK2.Name = "Label_PD_DOCK2";
             this.Label_PD_DOCK2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.Label_PD_DOCK2.SizeF = new System.Drawing.SizeF(339.8089F, 97.73615F);
+            this.Label_PD_DOCK2.SizeF = new System.Drawing.SizeF(339.8089F, 54.28854F);
             this.Label_PD_DOCK2.StylePriority.UseFont = false;
             // 
             // Label_PD_MEMO
@@ -497,7 +506,7 @@ namespace XtraReportSerialization {
             this.barCode1.ShowText = false;
             this.barCode1.SizeF = new System.Drawing.SizeF(326F, 43.44754F);
             this.barCode1.StylePriority.UseFont = false;
-            this.barCode1.Symbology = code128Generator1;
+            this.barCode1.Symbology = matrix2of5Generator1;
             // 
             // Label_PD_DOCK1
             // 
